@@ -2,9 +2,12 @@ baseURL = "https://diogocpaulo.github.io/robotics-portfolio/"
 title = "Diogo Paulo | Robotics & AI"
 theme = "hugo-profile"
 
+relativeURLs = true
+canonifyURLs = true
+
 [params]
 description = "Robotics and AI engineer focused on visual localization, perception and deep learning."
-favicon = "/images/favicon.png"
+favicon = "images/favicon.png"
 defaultTheme = "light"
 disableMember = true
 
