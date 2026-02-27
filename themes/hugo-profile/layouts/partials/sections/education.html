@@ -1,0 +1,58 @@
+{{ if .Site.Params.education.enable | default false }}
+<section id="education" class="py-5">
+  <div class="container">
+    <h3 class="text-center mb-5">{{ .Site.Params.education.title }}</h3>
+    <div class="row justify-content-center">
+      {{ range .Site.Params.education.items }}
+      <div class="col-md-10 mb-4">
+        <div class="education-card-flat position-relative">
+            
+            <div class="d-flex justify-content-between align-items-start flex-wrap">
+              <div class="edu-info-left">
+                <h4 class="edu-degree-title">{{ .title }}</h4>
+                <div class="mt-1">
+                  <a href="{{ .school.url }}" target="_blank" class="edu-uni-link">
+                    {{ .school.name }}
+                  </a>
+                </div>
+              </div>
+              <span class="edu-date-text">{{ .date }}</span>
+            </div>
+
+            {{ if .logo }}
+              <img src="{{ .logo | relURL }}" alt="University Logo" class="edu-logo-floating d-none d-md-block">
+            {{ end }}
+
+            <div class="mt-3">
+                {{ if .gpa }}
+                <div class="edu-gpa-highlight">GPA: {{ .gpa }}</div>
+                {{ end }}
+                
+                {{ if .thesis }}
+                <div class="mt-2 edu-thesis-text">
+                  <strong> Thesis:</strong> {{ .thesis }}
+                </div>
+                {{ end }}
+            </div>
+
+            <div class="mt-3 edu-description pe-5"> {{ .content | markdownify }}
+            </div>
+
+            {{ if .courses }}
+            <div class="mt-4 pe-5">
+              <h6 class="fw-bold"><i class="fas fa-list-ul me-1"></i> Relevant Coursework:</h6>
+              <ul class="course-grid">
+                {{ range .courses }}
+                <li>{{ . }}</li>
+                {{ end }}
+              </ul>
+            </div>
+            {{ end }}
+
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

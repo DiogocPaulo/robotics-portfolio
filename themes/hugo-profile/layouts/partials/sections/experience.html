@@ -1,0 +1,197 @@
+<style>
+  /* 1. Main Container: White in Light, Adaptive in Dark */
+  .exp-horizontal-card {
+      background: #ffffff !important; /* Forced White for Light Mode */
+      border: 1px solid #e1e4e8 !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+      margin-top: 2rem;
+      color: #333; /* Default dark text */
+  }
+
+  /* DARK MODE OVERRIDE for Container */
+  .dark .exp-horizontal-card {
+      background: var(--bg-card, rgba(255, 255, 255, 0.05)) !important;
+      border-color: rgba(128, 128, 128, 0.2) !important;
+      color: inherit !important; /* Flips text to White/Grey */
+  }
+  
+  /* 2. Header: Tab Navigation */
+  .exp-tabs-header {
+      border-bottom: 1px solid #e1e4e8 !important;
+      padding: 0 1.5rem !important;
+      background: #fff !important;
+  }
+
+  .dark .exp-tabs-header {
+      background: transparent !important;
+      border-bottom-color: rgba(128, 128, 128, 0.2) !important;
+  }
+
+  .exp-tabs-header .nav-link {
+      border: none !important;
+      color: #666 !important; /* Professional grey for light mode */
+      font-weight: 600 !important;
+      padding: 1rem 1.5rem !important;
+      border-bottom: 3px solid transparent !important;
+      background: transparent !important;
+      transition: all 0.2s ease;
+      border-radius: 0 !important;
+  }
+
+  .dark .exp-tabs-header .nav-link {
+      color: inherit !important; /* Adaptive text for dark mode tabs */
+      opacity: 0.7;
+  }
+
+  /* Hover & Active States */
+  .exp-tabs-header .nav-link:hover,
+  .dark .exp-tabs-header .nav-link:hover {
+      color: var(--primary-color) !important;
+      border-bottom: 3px solid rgba(0, 123, 255, 0.3) !important; 
+      opacity: 1;
+  }
+
+  .exp-tabs-header .nav-link.active {
+      color: var(--primary-color) !important;
+      border-bottom: 3px solid var(--primary-color) !important;
+      opacity: 1 !important;
+  }
+
+  /* 3. Logo Placement */
+  .exp-tab-logo-fixed {
+      position: absolute !important;
+      right: 0.5rem !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 100px !important; 
+      height: auto !important;
+      max-height: 80px !important;
+      object-fit: contain !important;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+  }
+
+  /* 4. Text Content Wrapping */
+  .exp-text-wrap ul { 
+      padding-right: 140px !important; 
+      margin-bottom: 0;
+  }
+
+  /* 5. Tech Tags: Adaptive Colors */
+  .exp-pill-custom {
+      display: inline-block !important;
+      background-color: #f8f9fa !important; /* Light Mode: Premium light grey */
+      color: #44546a !important;           /* Light Mode: Deep slate grey */
+      border: 1px solid #e1e4e8 !important; 
+      font-weight: 500 !important;
+      font-size: 0.82rem !important;
+      padding: 5px 12px !important;
+      border-radius: 8px !important;
+      margin-right: 8px !important;
+      margin-top: 10px !important;
+      transition: all 0.2s ease !important;
+  }
+
+  .dark .exp-pill-custom {
+      background-color: rgba(255, 255, 255, 0.1) !important; /* Dark Mode: Subtle glow */
+      color: inherit !important;
+      border-color: rgba(128, 128, 128, 0.3) !important;
+  }
+
+  .exp-pill-custom:hover {
+      background-color: var(--primary-color) !important;
+      color: #ffffff !important;
+      border-color: var(--primary-color) !important;
+  }
+
+  /* Smooth Company Link Interaction */
+  .exp-company-link-smooth {
+      color: #666 !important; 
+      text-decoration: none !important;
+      font-weight: 700 !important;
+      transition: color 0.3s ease !important;
+  }
+
+  .dark .exp-company-link-smooth {
+      color: inherit !important;
+      opacity: 0.8;
+  }
+
+  .exp-company-link-smooth:hover {
+      color: var(--primary-color) !important;
+      text-decoration: none !important;
+      opacity: 1 !important;
+  }
+
+  /* Responsive Fixes */
+  @media (max-width: 992px) {
+      .exp-tab-logo-fixed { display: none !important; }
+      .exp-text-wrap ul { padding-right: 0 !important; }
+  }
+</style>
+
+{{ if .Site.Params.experience.enable | default false }}
+<section id="experience" class="py-5">
+  <div class="container">
+    <h3 class="text-center mb-5">{{ .Site.Params.experience.title | default "Experience" }}</h3>
+    <div class="row justify-content-center">
+      <div class="col-lg-11">
+        
+        <div class="exp-horizontal-card">
+          <div class="exp-tabs-header">
+            <div class="nav nav-pills" id="pills-tab" role="tablist">
+              {{ range $index, $element := .Site.Params.experience.items }}
+              <button class="nav-link {{ if eq $index 0 }}active{{ end }}" 
+                      id="pill-{{ $index }}" data-bs-toggle="pill" 
+                      data-bs-target="#panel-{{ $index }}" type="button" role="tab">
+                {{ .company.name }}
+              </button>
+              {{ end }}
+            </div>
+          </div>
+
+          <div class="tab-content p-4" id="pills-tabContent">
+            {{ range $index, $element := .Site.Params.experience.items }}
+            <div class="tab-pane fade {{ if eq $index 0 }}show active{{ end }} position-relative" 
+                 id="panel-{{ $index }}" role="tabpanel">
+              
+              <div class="d-flex justify-content-between align-items-start flex-wrap mb-4">
+                <div>
+                  <h4 class="fw-bold text-primary mb-0">{{ .jobTitle }}</h4>
+                  <div class="mt-1">
+                    <a href="{{ .company.url }}" target="_blank" class="exp-company-link-smooth">
+                      {{ .company.name }}
+                    </a>
+                    <span class="text-muted ms-2">• {{ .location }}</span>
+                  </div>
+                </div>
+                <span class="fw-bold text-dark">{{ .date }}</span>
+              </div>
+
+              {{ if .logo }}
+              <img src="{{ .logo | relURL }}" alt="Logo" class="exp-tab-logo-fixed">
+              {{ end }}
+
+              <div class="exp-text-wrap">
+                {{ .content | markdownify }}
+              </div>
+
+              {{ if .technologies }}
+              <div class="mt-2">
+                {{ range .technologies }}
+                <span class="exp-pill-custom">{{ . }}</span>
+                {{ end }}
+              </div>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

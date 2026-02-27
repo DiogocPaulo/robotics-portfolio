@@ -1,0 +1,8 @@
+{{ range .Site.Params.social }}
+<a href="{{ .url | safeURL }}" 
+   target="_blank" 
+   aria-label="{{ .name }}" 
+   class="hero-social-link">
+    <i class="{{ .icon }}"></i>
+</a>
+{{ end }}

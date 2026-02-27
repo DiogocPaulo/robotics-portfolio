@@ -1,0 +1,33 @@
+{{- $about := .Site.Language.Params.about | default .Site.Params.about -}}
+{{- $paramContent := $about.content | default "" -}}
+{{- $contentPages := where .Site.RegularPages "Section" "about" -}}
+{{- $single := .Site.GetPage "page" "about" -}}
+{{- $pages := $contentPages -}}
+{{- if $single -}}
+  {{- $pages = $pages | append $single -}}
+{{- end -}}
+
+{{- if or ($about.enable | default false) (gt (len $pages) 0) -}}
+<section id="about" class="py-5">
+  <div class="container">
+    <h3 class="text-center">{{ $about.title | default .Site.Params.about.title | default (i18n "about") }}</h3>
+    
+    <div class="row justify-content-center">
+      <div class="col-12 mt-2 content"> 
+        {{- if gt (len $paramContent) 0 -}}
+            {{ $paramContent | markdownify }}
+        {{- else -}}
+            {{- if gt (len $pages) 0 -}}
+                {{- $p := index $pages 0 -}}
+                {{- if $.Site.IsServer -}}
+                    {{ $p.Content | safeHTML }}
+                {{- else -}}
+                    {{ $p.Summary | safeHTML }}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+      </div>
+    </div>
+    </div>
+</section>
+{{- end -}}

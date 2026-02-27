@@ -1,0 +1,22 @@
+<section id="achievements" class="py-5">
+  <div class="container">
+    <h3 class="text-center mb-5 fw-bold" style="color: var(--text-secondary-color);">
+        {{ .Site.Params.achievements.title }}
+    </h3>
+    
+    <div class="row g-4 justify-content-center">
+      {{ range .Site.Params.achievements.items }}
+      <div class="col-lg-4 col-md-6">
+        <div class="achievements-card">
+          <div class="ach-icon-box">
+             <i class="fas {{ .icon }}"></i>
+          </div>
+          <h5 class="ach-title">{{ .title }}</h5>
+          <span class="ach-subtitle">{{ .subtitle }}</span>
+          <p class="ach-description">{{ .description }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

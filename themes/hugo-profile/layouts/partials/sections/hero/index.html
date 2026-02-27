@@ -1,0 +1,178 @@
+{{ if .Site.Params.hero.enable | default false }}
+{{- $hero := .Site.Language.Params.hero | default .Site.Params.hero -}}
+
+<style>
+  /* --- Hero Action Styling --- */
+
+#hero {
+    /* Standard Hero is usually 3rem (py-5). 
+       8rem or 120px creates a premium, spacious look. */
+    padding-bottom: 200px !important; 
+}
+  
+  /* Container for both Resume and Socials */
+.hero-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between Resume and first icon */
+    margin-top: 1.5rem;
+}
+
+/* Custom Social Circle Styling */
+.hero-social-link {
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border: 1.5px solid var(--primary-color) !important; /* Blue border */
+    border-radius: 50% !important;
+    color: var(--primary-color) !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.hero-social-link:hover {
+    background-color: rgba(0, 123, 255, 0.05) !important;
+    transform: scale(1.1);
+}
+
+.hero-social-link i {
+    font-size: 1.2rem !important;
+}
+
+  /* 1. The Resume Pill */
+  .btn-hero-pill {
+      display: inline-block !important;
+      padding: 10px 35px !important;
+      border: 2px solid var(--primary-color) !important; /* KTH Blue */
+      border-radius: 15px !important; /* Premium pill shape */
+      background-color: transparent !important;
+      color: #333 !important;
+      font-weight: 600 !important;
+      font-size: 1.1rem !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+      margin-right: 15px;
+  }
+
+  .btn-hero-pill:hover {
+      background-color: var(--primary-color) !important;
+      color: #fff !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.15);
+  }
+
+  /* 2. Circular Social Icons */
+  .hero-social-wrapper a {
+      display: inline-flex !important;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      margin-right: 12px;
+      border: 1.5px solid var(--primary-color) !important; /* Clean blue circle */
+      border-radius: 50% !important;
+      color: var(--primary-color) !important;
+      transition: all 0.3s ease !important;
+      text-decoration: none !important;
+      background-color: transparent !important;
+  }
+
+  .hero-social-wrapper a:hover {
+      background-color: rgba(0, 123, 255, 0.05) !important;
+      transform: scale(1.1);
+  }
+
+  .hero-social-wrapper i {
+      font-size: 1.3rem !important;
+  }
+
+  @media (max-width: 576px) {
+      .hero-btn-group { justify-content: center; }
+      .btn-hero-pill { margin-right: 0; margin-bottom: 20px; width: 100%; text-align: center; }
+  }
+
+  :root{
+    --hero-btn-text: #333;
+    --hero-btn-border: var(--primary-color);
+  }
+
+  .btn-hero-pill{
+    color: var(--hero-btn-text) !important;
+    border: 2px solid var(--hero-btn-border) !important;
+    /* ...other properties left as-is... */
+  }
+
+  /* follow OS preference */
+  @media (prefers-color-scheme: dark){
+    :root{
+      --hero-btn-text: #fff;
+      --hero-btn-border: rgba(255,255,255,0.85);
+    }
+  }
+
+  /* if your theme toggles a .dark class on <body> */
+  body.dark{
+    --hero-btn-text: #fff;
+    --hero-btn-border: rgba(255,255,255,0.85);
+  }
+</style>
+
+<section id="hero" class="pt-5 align-middle">
+    <div class="container px-3 px-sm-5 px-md-5 px-lg-5 pt-lg-3">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8 content {{ if .Site.Params.animate }}animate{{ end }}" id="primary-font">
+                <span class="subtitle">
+                    {{ $hero.intro }}
+                </span>
+                <h1 class="fw-bold">
+                    {{ $hero.title }}
+                </h1>
+                <h2 class="text-muted">
+                    {{ $hero.subtitle | safeHTML }}
+                </h2>
+                <p class="hero-content mt-3">
+                    {{ $hero.content | markdownify }}
+                </p>
+
+                <div class="hero-btn-group mt-4">
+                    {{ if .Site.Params.hero.button.enable }}
+                    <a href="{{ "resume_Diogo_Paulo.pdf" | relURL }}" 
+                        class="btn-hero-pill" 
+                        download="Resume_Diogo_Paulo.pdf">
+                        {{ .Site.Params.hero.button.name }}
+                    </a>
+                    {{ end }}
+
+                    <div class="hero-social-wrapper">
+                        {{- partial "sections/hero/social.html" . -}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-9 pt-5 image {{ if .Site.Params.animate }}animate{{ end }} px-5 px-md-5 px-lg-0 text-center">
+                        <img src="{{ .Site.Params.hero.image | relURL }}"
+                            class="img-thumbnail mx-auto{{ if .Site.Params.hero.roundImage }} rounded-circle{{ end }}"
+                            alt="{{ .Site.Params.title }} profile image"
+                            style="border: none; background: transparent;"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ if .Site.Params.hero.bottomImage.enable | default true }}
+    <div class="hero-bottom-svg d-md-block d-lg-block d-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="201" height="201" viewBox="0 0 201 201">
+            <g id="Group_1168" data-name="Group 1168" transform="translate(-384 -1392)">
+                <rect width="12" height="2" rx="1" transform="translate(391 1392) rotate(90)" fill="#282f49" />
+                </g>
+        </svg>
+    </div>
+    {{ end }}
+</section>
+{{ end }}

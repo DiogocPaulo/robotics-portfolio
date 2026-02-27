@@ -1,0 +1,262 @@
+baseURL = "https://diogopaulo.github.io/"
+title = "Diogo Paulo | Robotics & AI"
+theme = "hugo-profile"
+
+[params]
+description = "Robotics and AI engineer focused on visual localization, perception and deep learning."
+favicon = "/images/favicon.png"
+defaultTheme = "light"
+disableMember = true
+
+[params.home]
+title = "Diogo Paulo"
+subtitle = "MSc Candidate @ KTH | Master's Thesis @ Ericsson Research"
+image = "images/profile.png"
+
+[params.skills]
+enable = true
+title = "Technical Skills"
+
+[[params.skills.list]]
+title = "Programming"
+items = ["Python (PyTorch)", "C/C++", "MATLAB", "JavaScript"]
+
+[[params.skills.list]]
+title = "Robotics & AI"
+items = ["ROS/ROS2", "Computer Vision", "Pose Estimation", "LiDAR"]
+
+[[params.skills.list]]
+title = "Hardware & Tools"
+items = ["Docker", "CUDA", "Git", "PCB Design (KiCad)"]
+
+[params.about]
+    enable = true
+    title = "About Me"
+    content = """
+Hi, I’m Diogo!
+
+I’m currently pursuing my **MSc in Systems, Control and Robotics at KTH Royal Institute of Technology**, where I focus on intelligent robotic perception and learning-based systems. I’m particularly interested in building machines that can understand, interpret and navigate complex real-world environments.
+
+At the moment, I’m conducting my master’s thesis research at **Ericsson Research**, working on extracting spatially consistent information from previously learned scene representations to enable accurate 6-DoF metric pose estimation. My work sits at the intersection of computer vision and deep learning, with applications in large-scale spatial understanding and autonomous systems.
+
+My academic journey began with a **BSc in Aerospace Engineering at IST**, where I developed a strong foundation in control systems, dynamics and applied mathematics. While I am still drawn to aerospace (mainly avionics and space), the rapid advances in large language models and autonomous technologies sparked in me a deeper interest in intelligent systems. That shift led me towards AI and robotics, where I found very interesting the challenge of making models interact meaningfully with the physical world.
+
+Since then, I’ve gained experience with PyTorch, ROS2, CUDA and building robotic pipelines. I’m particularly drawn to problems where perception, learning and control intersect, especially when I can do practical things and turn theory into systems that operate reliably in the real world.
+
+Outside of research, I stay grounded through music, film and time outdoors. I also enjoy volunteering and value environments where curiosity, collaboration and continuous learning are part of the culture.
+
+I’m always happy to connect with people who are excited about robotics, AI or interesting engineering challenges.
+"""
+
+[params.navbar]
+    disableSearch = true
+
+[params.contact]
+    enable = true
+    title = "Contacts"
+    content = "I am always open to discussing robotics, AI research, or potential collaborations."
+    email = "diogop@kth.se"
+
+[params.education]
+    enable = true
+    title = "Education"
+    index = false  # Set to true if you want the numbered circle next to items
+
+[[params.education.items]]
+    title = "MSc in Systems, Control and Robotics"
+    logo = "images/kth-logo.png"
+    date = "2024 - Present"
+    gpa = "4.88/5 (A)"
+    thesis = "Pose Estimation for Novel View Synthesis"
+    courses = ["Machine Learning", "Image Analysis and Computer Vision", "Deep Learning in Data Science", "Applied Estimation", "Applied GPU for Programming", "Data-Intensive Computing"]
+    content = "Specializing in Robotics and Autonomous Systems with a focus on perception and localization."
+    # ALWAYS put sub-tables like 'school' at the very bottom of the item block
+    [params.education.items.school]
+        name = "KTH Royal Institute of Technology"
+        url = "https://www.kth.se/"
+
+[[params.education.items]]
+    title = "BSc in Aerospace Engineering"
+    logo = "images/ist-logo.png"
+    date = "2021 - 2024"
+    gpa = "18/20 (A)" # Replace with your actual IST grade
+    courses = [
+    "Multivariable, Nonlinear and Optimal Control",
+    "Digital Systems",
+    "Computational Mathematics",
+    "Computer Architecture and Organization",
+    "Flight Control",
+    "Programming"
+]
+    content = "Studied the physical and mathematical foundations of aerospace systems, ranging from aerodynamics and thermodynamics to digital control."
+    [params.education.items.school]
+        name = "Instituto Superior Técnico"
+        url = "https://tecnico.ulisboa.pt/"
+
+
+[params.experience]
+enable = true
+
+[[params.experience.items]]
+    jobTitle = "Master's Thesis Intern"
+    date = "Jan 2026 - Present"
+    location = "Stockholm, Sweden"
+    logo = "images/ericsson-logo.png"
+    content = """
+* Investigating the use of AI-driven 3D scene models as high-accuracy digital maps to enable precise camera positioning and navigation in complex environments.
+* Developing a decoupled framework using Python and PyTorch to estimate 6-DoF metric poses by matching independent query images against latent scene representations generated via the RayZer model.
+"""
+    technologies = ["Python", "PyTorch", "6-DoF Pose Estimation", "RayZer", "Visual SLAM"]
+    [params.experience.items.company]
+        name = "Ericsson Research"
+        url = "https://www.ericsson.com/en/careers/research"
+
+[[params.experience.items]]
+    jobTitle = "Teaching & Laboratory Assistant"
+    date = "Aug 2025 - Present"
+    location = "Stockholm, Sweden"
+    logo = "images/kth-logo.png"
+    content = """
+* **Image Analysis and Computer Vision:** Assessed labs on Fourier domain filtering, edge detection, Hough Transform and 3D reconstruction via homographies/fundamental matrices.
+* **Machine Learning:** Assisted students in Python-based labs on Decision Trees, SVMs and Bayes Classifiers, while guiding sessions and evaluating oral presentations.
+* **Automatic Control:** Supported students with water tank experiments, including system analysis, controller design (PI, PID, lead-lag) and hardware implementation."""
+    # Updated to show technical proficiency
+    technologies = ["Python", "Computer Vision", "Machine Learning", "Control Systems", "Mentorship"]
+    [params.experience.items.company]
+        name = "KTH"
+        url = "https://www.kth.se/"
+
+[[params.experience.items]]
+    jobTitle = "Member of Aerospace Engineering Student Organization" 
+    date = "Sep 2022 - Aug 2024"
+    location = "Lisbon, Portugal"
+    logo = "images/aerotec-logo.png"
+    content = """
+* **Avionics & Electronics (RED):** Engineered and fabricated flight-ready PCBs for award-winning high-power rockets (Camões and Adamastor), successfully reaching a 3km apogee in the ESA EuRoC competition.
+* **Full-Stack Development:** Architected and maintained a cloud-based infrastructure and MongoDB database, streamlining digital operations for a community of 700+ aerospace students.
+* **Creative Direction (Aerospace Week):** Conceptualized the visual identity and multi-media content for Europe’s largest student-led aerospace event, engaging an audience of 11,000+ with speakers from NASA, ESA, and McLaren Racing."""
+    # Technologies updated to show a mix of hardware and software mastery
+    technologies = ["PCB Design", "KiCad", "MongoDB", "Git", "Video Editing"]
+    [params.experience.items.company]
+        name = "AeroTéc"
+        url = "https://aerotec.pt/"
+
+[[params.experience.items]]
+    jobTitle = "Laboratory Monitor (LEMAC/LTI)"
+    date = "Jan 2024 - Aug 2024"
+    location = "Lisbon, Portugal"
+    logo = "images/ist-logo.png"
+    content = """
+* Managed a computer laboratory at IST, ensuring smooth functionality and providing technical support for the Mechanical Engineering Department.
+* Troubleshooted hardware and software issues for both students and faculty in a high-demand academic environment.
+"""
+    technologies = ["Technical Support", "3D Printing", "Troubleshooting"]
+    [params.experience.items.company]
+        name = "IST"
+        url = "https://tecnico.ulisboa.pt/"
+
+[[params.experience.items]]
+    jobTitle = "Student Ambassador"
+    date = "Sep 2022 - Jun 2024"
+    location = "Lisbon, Portugal"
+    logo = "images/ey-logo.png"
+    content = """
+* Selected as one of 36 ambassadors to manage communication and coordinate high-profile recruitment events on campus.
+* Facilitated networking between students and EY leadership, enhancing brand presence within the university.
+"""
+    technologies = ["Leadership", "Event Coordination", "Communication"]
+    [params.experience.items.company]
+        name = "EY  "
+        url = "https://www.ey.com"
+
+[[params.experience.items]]
+    jobTitle = "IT Support Intern"
+    date = "Jun 2023 - Aug 2023"
+    location = "Lisbon, Portugal"
+    logo = "images/jm-logo.png" # Place this in static/images/
+    content = """
+* Provided technical support and troubleshooting for hardware and software systems across the organization.
+* Managed the deployment and maintenance of IT infrastructure to ensure operational continuity.
+* Documented technical procedures and assisted users with system optimizations.
+"""
+    technologies = ["SAP", "System Maintenance", "Infrastructure Management"]
+    [params.experience.items.company]
+        name = "Jerónimo Martins"
+        url = "https://www.jeronimomartins.com/pt/" # Smooth link
+
+[params.achievements]
+    enable = true
+    title = "Honors & Interests"
+
+[[params.achievements.items]]
+    title = "Academic Merit Award"
+    icon = "fa-graduation-cap"
+    subtitle = "Aerospace Engineering | 2021 - 2024"
+    description = "Awarded for exceptional academic performance (Top 5% of students) during the 1st, 2nd and 3rd years of the BSc."
+
+[[params.achievements.items]]
+    title = "National Biology Olympiad"
+    icon = "fa-medal"
+    subtitle = "3rd in Portugal | 2019"
+    description = "Ranked 3rd nationally among thousands of participants, demonstrating strong analytical and scientific skills."
+
+[[params.achievements.items]]
+    title = "Merit Board Student"
+    icon = "fa-scroll"
+    subtitle = "2009 - 2021"
+    description = "Consistently recognized for academic excellence and top-tier grades throughout pre-university education."
+
+[[params.achievements.items]]
+    title = "Volunteer: Refood & Web Summit"
+    icon = "fa-hands-helping"
+    subtitle = "2021 - 2024"
+    description = "Contributed to community food redistribution and supported logistics for Europe's largest tech conference."
+
+[[params.achievements.items]]
+    title = "Music: Piano Grade V"
+    icon = "fa-music"
+    subtitle = "2013 - 2018"
+    description = "Completed Grade V Piano certification, showcasing long-term discipline and a well-rounded creative background."
+
+[params.hero]
+    enable = true
+    title = "Diogo Paulo"
+    subtitle = "MSc in Systems, Control and Robotics @ KTH <br> Master's Thesis @ Ericsson Research"
+    image = "images/profile.png"
+
+    [params.hero.button]
+        enable = true
+        name = "Resume"
+        url = "resume_Diogo_Paulo.pdf"
+        download = true
+
+# Place this at the bottom of your hugo.toml or under [params]
+[[params.social]]
+    name = "GitHub"
+    icon = "fab fa-github"
+    url = "https://github.com/DiogocPaulo"
+
+[[params.social]]
+    name = "LinkedIn"
+    icon = "fab fa-linkedin"
+    url = "https://linkedin.com/in/diogo-paulo"
+
+[[params.social]]
+    name = "Email"
+    icon = "fas fa-envelope"
+    url = "mailto:diogop@kth.se"
+
+[params.sidebar]
+  # If your theme has a widgets list, ensure 'social' is removed
+  # widgets = ["about", "tableofcontents", "tags"] 
+  
+  # Some versions of hugo-profile use a specific toggle
+  disableSocial = true
+
+[params.singlePages]
+    socialShare = false
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
