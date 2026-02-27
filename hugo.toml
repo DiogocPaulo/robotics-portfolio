@@ -7,7 +7,7 @@ canonifyURLs = true
 
 [params]
 description = "Robotics and AI engineer focused on visual localization, perception and deep learning."
-favicon = "images/favicon.png"
+favicon = "/images/favicon.png"
 defaultTheme = "light"
 disableMember = true
 
